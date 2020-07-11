@@ -1,0 +1,50 @@
+# -*- mode: org; buffer-read-only: nil; truncate-lines: nil; fill-column: 84 -*-
+#+STARTUP: showall
+#+OPTIONS: ^:{} toc:nil num:nil date:nil author:nil
+#+BIND: org-html-toplevel-hlevel 3
+
+* dc-kibana
+
+  kibana under docker-compose
+
+
+** elasticsearch の接続先エンドポイント
+
+   デフォルトは http://elasticsearch:9200
+
+   変更するには:
+
+   1. 設定ファイル =docker-compose.yml= の =extra_hosts= で設定する。
+      (設定ファイル =.env= で対応)
+
+      - ネットワーク・モード =host= でない場合に使える。ただしホスト名指定のみ。
+        ポートも指定したければ方法 2. を採用する。
+
+      - ネットワーク・モード =host= である場合に使える。
+
+   2. 環境設定ファイル =config/kibana.env= で =ELASTICSEARCH_HOSTS= を設定する。
+
+      - ネットワーク・モード =host= でない場合に使える。
+
+      - ネットワーク・モード =host= である場合に使える。
+
+
+** kibana のエンドポイント
+
+   デフォルトは 0:5601
+
+   変更するには:
+
+   1. 設定ファイル =docker-compose.yml= の =ports= で設定する。
+      (設定ファイル =.env= で対応)
+
+      - ネットワーク・モード =host= でない場合に使える。
+
+      - ネットワーク・モード =host= である場合は使えない。
+
+   2. 設定ファイル =config/kibana.env= で =SERVER_HOST= =SERVER_PORT= を設定する
+
+      - ネットワーク・モード =host= でない場合に使える。
+        ただし方法 1. との併用になるため推奨しない。
+
+      - ネットワーク・モード =host= である場合にはこれしかない。

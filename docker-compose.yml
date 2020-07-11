@@ -6,13 +6,13 @@ services:
     # https://www.elastic.co/guide/en/kibana/6.8/docker.html
     # https://github.com/elastic/dockerfiles
     # https://www.docker.elastic.co/
+    env_file: config/kibana.env
     environment:
-      # SERVER_HOST: '127.0.0.1'
       SERVER_BASEPATH: /_plugin/kibana     # aws Elasticsearch と同じにしておく
       SERVER_REWRITEBASEPATH: 'true'
-      # ELASTICSEARCH_HOSTS: $ELASTICSEARCH_HOSTS
-      XPACK_MONITORING_UI_CONTAINER_ELASTICSEARCH_ENABLED: 'false'
-      # LOGGING_QUIET: 'true'
-    extra_hosts:
-      - 'elasticsearch:$ELASTICSEARCH_HOST'
+    # network_mode: bridge
+    # extra_hosts:
+    #   - 'elasticsearch:$ELASTICSEARCH_HOST'
+    # ports:
+    #   - '$EXPOSE_KIBANA:5601'
     network_mode: host
