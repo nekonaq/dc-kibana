@@ -10,9 +10,4 @@ services:
     environment:
       SERVER_BASEPATH: /_plugin/kibana     # aws Elasticsearch と同じにしておく
       SERVER_REWRITEBASEPATH: 'true'
-    # network_mode: bridge
-    # extra_hosts:
-    #   - 'elasticsearch:$ELASTICSEARCH_HOST'
-    # ports:
-    #   - '$EXPOSE_KIBANA:5601'
     network_mode: host
